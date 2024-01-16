@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PlumbBristol</string>
+    <string name="generic_error_label">Sorry, something went down the toilet</string>
 </resources>

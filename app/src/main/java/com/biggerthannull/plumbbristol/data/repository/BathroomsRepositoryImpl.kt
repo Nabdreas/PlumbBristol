@@ -9,7 +9,7 @@ import javax.inject.Inject
 class BathroomsRepositoryImpl @Inject constructor(
     private val dataSource: BathroomsDataSource
 ): BathroomsRepository {
-    override fun getBathrooms(): List<BathroomOverview> {
+    override suspend fun getBathrooms(): List<BathroomOverview> {
         return dataSource.getBathrooms().fold(
             onSuccess = { bathrooms ->
                 bathrooms.map { bathroom ->

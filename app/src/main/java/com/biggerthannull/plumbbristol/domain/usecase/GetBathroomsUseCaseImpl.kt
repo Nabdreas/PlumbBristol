@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetBathroomsUseCaseImpl @Inject constructor(
     private val repo: BathroomsRepository
 ): GetBathroomsUseCase {
-    override fun execute(): List<BathroomOverview> {
+    override suspend fun execute(): List<BathroomOverview> {
         return repo.getBathrooms()
     }
 }
