@@ -10,9 +10,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.biggerthannull.plumbbristol.ui.theme.PlumbBristolTheme
+import com.biggerthannull.plumbbristol.ui.views.viewmodels.state.HomeScreenUIState
 
 @Composable
-fun LandingScreen() {
+fun HomeScreen(uiState: HomeScreenUIState) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -28,8 +29,8 @@ fun LandingScreen() {
 
 @Preview
 @Composable
-fun LandingScreenPreview() {
+fun HomeScreenPreview() {
     PlumbBristolTheme {
-        LandingScreen()
+        HomeScreen(HomeScreenUIState())
     }
 }

@@ -14,7 +14,9 @@ import com.biggerthannull.plumbbristol.ui.navigation.NavigationGraph
 import com.biggerthannull.plumbbristol.ui.theme.PlumbBristolTheme
 import com.biggerthannull.plumbbristol.ui.views.composables.components.BottomNavigationComponent
 import com.biggerthannull.plumbbristol.ui.views.composables.components.TopBarComponent
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
