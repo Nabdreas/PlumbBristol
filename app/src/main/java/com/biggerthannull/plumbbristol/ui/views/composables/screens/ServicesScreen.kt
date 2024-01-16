@@ -12,7 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.biggerthannull.plumbbristol.ui.theme.PlumbBristolTheme
 
 @Composable
-fun LandingScreen() {
+fun ServicesScreen() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -20,7 +20,7 @@ fun LandingScreen() {
     ) {
         Text(
             modifier = Modifier.fillMaxWidth(),
-            text = "Here you can find the latest jobs completed",
+            text = "Here you can find our pricing and services",
             textAlign = TextAlign.Center
         )
     }
@@ -28,8 +28,8 @@ fun LandingScreen() {
 
 @Preview
 @Composable
-fun LandingScreenPreview() {
+fun ServicesScreenPreview() {
     PlumbBristolTheme {
-        LandingScreen()
+        ServicesScreen()
     }
 }
