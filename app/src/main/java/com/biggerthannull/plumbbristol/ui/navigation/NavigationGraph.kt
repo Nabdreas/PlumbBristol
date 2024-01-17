@@ -32,6 +32,9 @@ fun NavigationGraph(navController: NavHostController) {
         composable(BottomNavItems.ContactUs.path) {
             ContactUsScreen()
         }
+        composable(BottomNavItems.Team.path) {
+
+        }
         composable(
             NavPaths.BATHROOM_DETAILS_PATH,
             arguments = listOf(navArgument(BATHROOM_ID) { type = NavType.StringType })

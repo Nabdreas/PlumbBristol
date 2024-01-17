@@ -24,4 +24,10 @@ class FirestoreModule {
     fun provideBathroomsCollection(firestore: FirebaseFirestore): CollectionReference {
         return firestore.collection("bathrooms")
     }
+
+    @Provides
+    @Named("TEAM")
+    fun provideTeamCollection(firestore: FirebaseFirestore): CollectionReference {
+        return firestore.collection("team")
+    }
 }

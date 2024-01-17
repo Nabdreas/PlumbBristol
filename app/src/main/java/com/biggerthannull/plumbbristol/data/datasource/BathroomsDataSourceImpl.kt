@@ -42,8 +42,4 @@ class BathroomsDataSourceImpl @Inject constructor(
             )
         }
     }
-
-    private fun parseBathroomDetailsSnapshotToDTO() {
-
-    }
 }

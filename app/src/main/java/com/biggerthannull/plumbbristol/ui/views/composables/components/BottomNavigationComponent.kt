@@ -1,11 +1,18 @@
 package com.biggerthannull.plumbbristol.ui.views.composables.components
 
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.biggerthannull.plumbbristol.ui.navigation.BottomNavItems
@@ -16,6 +23,7 @@ fun BottomNavigationComponent(navController: NavController) {
     val items = listOf(
         BottomNavItems.Home,
         BottomNavItems.Services,
+        BottomNavItems.Team,
         BottomNavItems.ContactUs
     )
     BottomNavigation(
@@ -28,12 +36,14 @@ fun BottomNavigationComponent(navController: NavController) {
             BottomNavigationItem(
                 label = {
                     Text(
-                        text = bottomBarItem.title,
-                        color = Color.White
+                        text = bottomBarItem.title, color = Color.White, style = TextStyle(
+                            fontWeight = FontWeight.Bold, fontSize = 12.sp
+                        )
                     )
                 },
+                selectedContentColor = Color.White,
                 selected = currentRoute == bottomBarItem.path,
-                alwaysShowLabel = true,
+                alwaysShowLabel = false,
                 onClick = {
                     navController.navigate(bottomBarItem.path) {
                         navController.graph.startDestinationRoute?.let { startDestinationRoute ->
@@ -43,7 +53,14 @@ fun BottomNavigationComponent(navController: NavController) {
                         restoreState = true
                     }
                 },
-                icon = { /*TODO*/ }
+                icon = {
+                    Icon(
+                        imageVector = bottomBarItem.icon,
+                        tint = Color.White,
+                        contentDescription = bottomBarItem.title,
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
             )
         }
     }
