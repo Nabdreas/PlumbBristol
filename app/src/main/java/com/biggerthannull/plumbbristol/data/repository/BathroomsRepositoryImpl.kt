@@ -1,8 +1,10 @@
 package com.biggerthannull.plumbbristol.data.repository
 
 import com.biggerthannull.plumbbristol.data.datasource.BathroomsDataSource
+import com.biggerthannull.plumbbristol.data.datasource.model.BathroomDTO
 import com.biggerthannull.plumbbristol.domain.repository.BathroomsRepository
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomDetails
+import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomDetailsResult
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomOverview
 import javax.inject.Inject
 
@@ -26,7 +28,25 @@ class BathroomsRepositoryImpl @Inject constructor(
         )
     }
 
-    override fun getBathroom(): BathroomDetails {
-        TODO("Not yet implemented")
+    override suspend fun getBathroomDetails(bathroomId: String): BathroomDetailsResult {
+        return dataSource.getBathroomDetails(bathroomId).fold(
+            onSuccess = { details ->
+                val result = mapFromDTOToDomain(details)
+                BathroomDetailsResult.Success(data = result)
+            },
+            onFailure = {
+                BathroomDetailsResult.Failed
+            }
+        )
+    }
+
+    private fun mapFromDTOToDomain(dto: BathroomDTO): BathroomDetails {
+        return BathroomDetails(
+            title = dto.title.orEmpty(),
+            description = dto.description.orEmpty(),
+            price = dto.price.orEmpty(),
+            duration = dto.duration.orEmpty(),
+            gallery = dto.images,
+        )
     }
 }

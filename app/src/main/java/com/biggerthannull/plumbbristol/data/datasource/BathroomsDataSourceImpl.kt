@@ -13,19 +13,37 @@ class BathroomsDataSourceImpl @Inject constructor(
     override suspend fun getBathrooms(): Result<List<BathroomDTO>> {
         return try {
             val snapshot = collection.get().await()
-            val result = parseToDTO(snapshot)
+            val result = parseBathroomsSnapshotToDTO(snapshot)
             Result.success(result)
         } catch (e: Exception) {
             Result.failure(e)
         }
     }
 
-    private fun parseToDTO(snapshot: QuerySnapshot): List<BathroomDTO> {
+    override suspend fun getBathroomDetails(documentId: String): Result<BathroomDTO> {
+        return try {
+            val snapshot = collection.document(documentId).get().await()
+            val result = snapshot.toObject(BathroomDTO::class.java)
+            if (result == null) {
+                Result.failure(Exception("Something failed"))
+            } else {
+                Result.success(result)
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    private fun parseBathroomsSnapshotToDTO(snapshot: QuerySnapshot): List<BathroomDTO> {
         return snapshot.map { queryDocumentSnapshot ->
             val mapped = queryDocumentSnapshot.toObject(BathroomDTO::class.java)
             mapped.copy(
                 id = queryDocumentSnapshot.id
             )
         }
+    }
+
+    private fun parseBathroomDetailsSnapshotToDTO() {
+
     }
 }
