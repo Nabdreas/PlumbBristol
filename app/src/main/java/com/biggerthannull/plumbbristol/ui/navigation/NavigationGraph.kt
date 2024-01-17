@@ -5,11 +5,17 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import com.biggerthannull.plumbbristol.ui.navigation.models.NavArguments.BATHROOM_ID
+import com.biggerthannull.plumbbristol.ui.navigation.models.NavPaths
+import com.biggerthannull.plumbbristol.ui.views.composables.screens.BathroomDetailsScreen
 import com.biggerthannull.plumbbristol.ui.views.composables.screens.ContactUsScreen
 import com.biggerthannull.plumbbristol.ui.views.composables.screens.HomeScreen
 import com.biggerthannull.plumbbristol.ui.views.composables.screens.ServicesScreen
+import com.biggerthannull.plumbbristol.ui.views.viewmodels.BathroomDetailsViewModel
 import com.biggerthannull.plumbbristol.ui.views.viewmodels.HomeViewModel
 
 @Composable
@@ -18,13 +24,21 @@ fun NavigationGraph(navController: NavHostController) {
         composable(BottomNavItems.Home.path) {
             val viewModel: HomeViewModel = hiltViewModel()
             val uiState by viewModel.uiState.collectAsState()
-            HomeScreen(uiState)
+            HomeScreen(uiState, navController)
         }
         composable(BottomNavItems.Services.path) {
             ServicesScreen()
         }
         composable(BottomNavItems.ContactUs.path) {
             ContactUsScreen()
+        }
+        composable(
+            NavPaths.BATHROOM_DETAILS_PATH,
+            arguments = listOf(navArgument(BATHROOM_ID) { type = NavType.StringType })
+        ) {
+            val viewModel: BathroomDetailsViewModel = hiltViewModel()
+            val uiState by viewModel.uiState.collectAsState()
+            BathroomDetailsScreen(uiState)
         }
     }
 }

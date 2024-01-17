@@ -14,6 +14,7 @@ class BathroomsRepositoryImpl @Inject constructor(
             onSuccess = { bathrooms ->
                 bathrooms.map { bathroom ->
                     BathroomOverview(
+                        id = bathroom.id.orEmpty(),
                         title = bathroom.title.orEmpty(),
                         coverImage = bathroom.images.first()
                     )

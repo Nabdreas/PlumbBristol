@@ -9,20 +9,25 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.biggerthannull.plumbbristol.R
 import com.biggerthannull.plumbbristol.ui.theme.PlumbBristolTheme
 import com.biggerthannull.plumbbristol.ui.views.composables.components.PrimaryListComponent
 import com.biggerthannull.plumbbristol.ui.views.viewmodels.state.HomeScreenUIState
 
 @Composable
-fun HomeScreen(uiState: HomeScreenUIState) {
+fun HomeScreen(uiState: HomeScreenUIState, navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentSize(Alignment.Center)
     ) {
         if (uiState.bathrooms.isNotEmpty()) {
-            PrimaryListComponent(data = uiState.bathrooms)
+            PrimaryListComponent(data = uiState.bathrooms) { itemId ->
+                val napPath = "bathroom_details_path/$itemId"
+                navController.navigate(napPath)
+            }
         } else {
             Text(text = stringResource(id = R.string.generic_error_label))
         }
@@ -33,6 +38,6 @@ fun HomeScreen(uiState: HomeScreenUIState) {
 @Composable
 fun HomeScreenPreview() {
     PlumbBristolTheme {
-        HomeScreen(HomeScreenUIState())
+        HomeScreen(uiState = HomeScreenUIState(), navController = rememberNavController())
     }
 }

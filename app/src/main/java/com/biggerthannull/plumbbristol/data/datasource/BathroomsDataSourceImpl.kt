@@ -8,8 +8,8 @@ import javax.inject.Inject
 import javax.inject.Named
 
 class BathroomsDataSourceImpl @Inject constructor(
-    @Named("BATHROOMS")private val collection: CollectionReference
-): BathroomsDataSource {
+    @Named("BATHROOMS") private val collection: CollectionReference
+) : BathroomsDataSource {
     override suspend fun getBathrooms(): Result<List<BathroomDTO>> {
         return try {
             val snapshot = collection.get().await()
@@ -21,8 +21,11 @@ class BathroomsDataSourceImpl @Inject constructor(
     }
 
     private fun parseToDTO(snapshot: QuerySnapshot): List<BathroomDTO> {
-        return snapshot.map {queryDocumentSnapshot ->
-            queryDocumentSnapshot.toObject(BathroomDTO::class.java)
+        return snapshot.map { queryDocumentSnapshot ->
+            val mapped = queryDocumentSnapshot.toObject(BathroomDTO::class.java)
+            mapped.copy(
+                id = queryDocumentSnapshot.id
+            )
         }
     }
 }
