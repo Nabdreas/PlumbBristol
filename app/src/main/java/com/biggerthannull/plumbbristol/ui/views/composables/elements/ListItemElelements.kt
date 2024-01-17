@@ -14,8 +14,8 @@ fun ListTitle(modifier: Modifier, text: String, color: Color) {
 }
 
 @Composable
-fun ListDescription(text: String) {
-    Text(text = text)
+fun ListDescription(modifier: Modifier, text: String, color: Color) {
+    Text(text = text, modifier = modifier, color = color, fontSize = 12.sp)
 }
 
 @Composable
@@ -35,7 +35,7 @@ fun ListTitlePreview() {
 @Composable
 fun ListDescriptionPreview() {
     PlumbBristolTheme {
-        ListDescription("I am description")
+        ListDescription(modifier = Modifier, text = "I am description", color = Color.White)
     }
 }
 

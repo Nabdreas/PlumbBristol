@@ -4,6 +4,8 @@ import com.biggerthannull.plumbbristol.domain.usecase.GetBathroomDetailsUseCase
 import com.biggerthannull.plumbbristol.domain.usecase.GetBathroomDetailsUseCaseImpl
 import com.biggerthannull.plumbbristol.domain.usecase.GetBathroomsUseCase
 import com.biggerthannull.plumbbristol.domain.usecase.GetBathroomsUseCaseImpl
+import com.biggerthannull.plumbbristol.domain.usecase.GetTeamUseCase
+import com.biggerthannull.plumbbristol.domain.usecase.GetTeamUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -17,4 +19,7 @@ interface DomainModule {
 
     @Binds
     fun bindGetBathroomDetailsUseCase(impl: GetBathroomDetailsUseCaseImpl): GetBathroomDetailsUseCase
+
+    @Binds
+    fun bindGetTeamUseCase(impl: GetTeamUseCaseImpl): GetTeamUseCase
 }

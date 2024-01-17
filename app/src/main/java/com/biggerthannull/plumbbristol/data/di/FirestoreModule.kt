@@ -1,5 +1,7 @@
 package com.biggerthannull.plumbbristol.data.di
 
+import com.biggerthannull.plumbbristol.data.di.NamedParams.BATHROOMS
+import com.biggerthannull.plumbbristol.data.di.NamedParams.TEAM
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -20,13 +22,13 @@ class FirestoreModule {
     }
 
     @Provides
-    @Named("BATHROOMS")
+    @Named(BATHROOMS)
     fun provideBathroomsCollection(firestore: FirebaseFirestore): CollectionReference {
         return firestore.collection("bathrooms")
     }
 
     @Provides
-    @Named("TEAM")
+    @Named(TEAM)
     fun provideTeamCollection(firestore: FirebaseFirestore): CollectionReference {
         return firestore.collection("team")
     }

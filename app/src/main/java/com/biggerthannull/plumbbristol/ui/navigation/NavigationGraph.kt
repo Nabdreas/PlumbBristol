@@ -15,8 +15,10 @@ import com.biggerthannull.plumbbristol.ui.views.composables.screens.BathroomDeta
 import com.biggerthannull.plumbbristol.ui.views.composables.screens.ContactUsScreen
 import com.biggerthannull.plumbbristol.ui.views.composables.screens.HomeScreen
 import com.biggerthannull.plumbbristol.ui.views.composables.screens.ServicesScreen
+import com.biggerthannull.plumbbristol.ui.views.composables.screens.TeamScreen
 import com.biggerthannull.plumbbristol.ui.views.viewmodels.BathroomDetailsViewModel
 import com.biggerthannull.plumbbristol.ui.views.viewmodels.HomeViewModel
+import com.biggerthannull.plumbbristol.ui.views.viewmodels.TeamViewModel
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
@@ -33,7 +35,9 @@ fun NavigationGraph(navController: NavHostController) {
             ContactUsScreen()
         }
         composable(BottomNavItems.Team.path) {
-
+            val viewModel: TeamViewModel = hiltViewModel()
+            val uiState by viewModel.uiState.collectAsState()
+            TeamScreen(uiState)
         }
         composable(
             NavPaths.BATHROOM_DETAILS_PATH,
