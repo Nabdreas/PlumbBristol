@@ -6,5 +6,6 @@ data class BathroomDetails(
     val description: String,
     val price: String,
     val duration: String,
-    val gallery: List<String>
+    val gallery: List<String>,
+    val isBookmarked: Boolean = false
 )

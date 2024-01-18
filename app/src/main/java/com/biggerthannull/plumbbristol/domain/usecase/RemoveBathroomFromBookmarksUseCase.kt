@@ -1,5 +1,5 @@
 package com.biggerthannull.plumbbristol.domain.usecase
 
 interface RemoveBathroomFromBookmarksUseCase {
-    fun execute(id: String)
+    suspend fun execute(id: String)
 }

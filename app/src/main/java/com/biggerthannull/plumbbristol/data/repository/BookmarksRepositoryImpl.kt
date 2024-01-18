@@ -39,6 +39,6 @@ class BookmarksRepositoryImpl @Inject constructor(
     }
 
     override suspend fun removeBookmarkedBathroom(id: String) {
-        TODO("Not yet implemented")
+        localBathroomsDataSource.removeBookmarkedBathroom(id)
     }
 }

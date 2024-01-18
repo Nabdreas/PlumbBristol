@@ -1,11 +1,12 @@
 package com.biggerthannull.plumbbristol.domain.usecase
 
+import com.biggerthannull.plumbbristol.domain.repository.BookmarksRepository
 import javax.inject.Inject
 
 class RemoveBathroomFromBookmarksUseCaseImpl @Inject constructor(
-
+    private val repo: BookmarksRepository
 ): RemoveBathroomFromBookmarksUseCase {
-    override fun execute(id: String) {
-        TODO("Not yet implemented")
+    override suspend fun execute(id: String) {
+        repo.removeBookmarkedBathroom(id)
     }
 }

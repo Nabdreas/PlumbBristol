@@ -10,6 +10,8 @@ import com.biggerthannull.plumbbristol.domain.usecase.GetTeamUseCase
 import com.biggerthannull.plumbbristol.domain.usecase.GetTeamUseCaseImpl
 import com.biggerthannull.plumbbristol.domain.usecase.ObserveBookmarkedBathroomsUseCase
 import com.biggerthannull.plumbbristol.domain.usecase.ObserveBookmarkedBathroomsUseCaseImpl
+import com.biggerthannull.plumbbristol.domain.usecase.RemoveBathroomFromBookmarksUseCase
+import com.biggerthannull.plumbbristol.domain.usecase.RemoveBathroomFromBookmarksUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -32,4 +34,7 @@ interface DomainModule {
 
     @Binds
     fun bindObserveBookmarkedBathroomsUseCase(impl: ObserveBookmarkedBathroomsUseCaseImpl): ObserveBookmarkedBathroomsUseCase
+
+    @Binds
+    fun bindRemoveBathroomFromBookmarksUseCase(impl: RemoveBathroomFromBookmarksUseCaseImpl): RemoveBathroomFromBookmarksUseCase
 }

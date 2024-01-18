@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.biggerthannull.plumbbristol.domain.usecase.AddBathroomToBookmarksUseCase
 import com.biggerthannull.plumbbristol.domain.usecase.GetBathroomDetailsUseCase
+import com.biggerthannull.plumbbristol.domain.usecase.RemoveBathroomFromBookmarksUseCase
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomDetails
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomDetailsResult
 import com.biggerthannull.plumbbristol.ui.navigation.models.NavArguments
@@ -20,7 +21,8 @@ import javax.inject.Inject
 class BathroomDetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val getBathroomDetailsUseCase: GetBathroomDetailsUseCase,
-    private val addBathroomToBookmarksUseCase: AddBathroomToBookmarksUseCase
+    private val addBathroomToBookmarksUseCase: AddBathroomToBookmarksUseCase,
+    private val removeBathroomFromBookmarksUseCase: RemoveBathroomFromBookmarksUseCase
 ) : ViewModel(), DetailsUserEvents {
 
     private val _uiState = MutableStateFlow<BathroomDetailsUIState>(BathroomDetailsUIState.Loading)
@@ -44,7 +46,11 @@ class BathroomDetailsViewModel @Inject constructor(
 
     override fun bookmarkBathroom(data: BathroomDetails) {
         viewModelScope.launch {
-            addBathroomToBookmarksUseCase.execute(data)
+            if (data.isBookmarked) {
+                removeBathroomFromBookmarksUseCase.execute(data.id)
+            } else {
+                addBathroomToBookmarksUseCase.execute(data)
+            }
         }
     }
 }

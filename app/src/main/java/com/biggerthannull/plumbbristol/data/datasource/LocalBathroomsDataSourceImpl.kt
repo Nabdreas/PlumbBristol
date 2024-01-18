@@ -12,7 +12,15 @@ class LocalBathroomsDataSourceImpl @Inject constructor(
         dao.upsertBookmarkedBathroom(data)
     }
 
+    override suspend fun removeBookmarkedBathroom(id: String) {
+        dao.deleteBookmarkedBathroom(id)
+    }
+
     override suspend fun observeBookmarkedBathrooms(): Flow<List<BathroomEntity>> {
         return dao.getBookmarkedBathrooms()
+    }
+
+    override suspend fun isAdded(id: String): Boolean {
+        return dao.isAdded(id)
     }
 }

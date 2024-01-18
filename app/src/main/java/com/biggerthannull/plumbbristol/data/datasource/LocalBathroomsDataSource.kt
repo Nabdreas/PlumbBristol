@@ -6,6 +6,9 @@ import kotlinx.coroutines.flow.Flow
 interface LocalBathroomsDataSource {
 
     suspend fun addBookmarkedBathroom(data: BathroomEntity)
+    suspend fun removeBookmarkedBathroom(id: String)
 
     suspend fun observeBookmarkedBathrooms(): Flow<List<BathroomEntity>>
+
+    suspend fun isAdded(id: String): Boolean
 }

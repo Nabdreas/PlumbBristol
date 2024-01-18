@@ -1,16 +1,21 @@
 package com.biggerthannull.plumbbristol.data.repository
 
+import android.util.Log
 import com.biggerthannull.plumbbristol.data.datasource.BathroomsDataSource
+import com.biggerthannull.plumbbristol.data.datasource.LocalBathroomsDataSource
 import com.biggerthannull.plumbbristol.data.datasource.model.BathroomDTO
 import com.biggerthannull.plumbbristol.domain.repository.BathroomsRepository
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomDetails
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomDetailsResult
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomOverview
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class BathroomsRepositoryImpl @Inject constructor(
-    private val dataSource: BathroomsDataSource
-): BathroomsRepository {
+    private val dataSource: BathroomsDataSource,
+    private val localBookmarksDataSource: LocalBathroomsDataSource
+) : BathroomsRepository {
     override suspend fun getBathrooms(): List<BathroomOverview> {
         return dataSource.getBathrooms().fold(
             onSuccess = { bathrooms ->
@@ -29,18 +34,22 @@ class BathroomsRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getBathroomDetails(bathroomId: String): BathroomDetailsResult {
-        return dataSource.getBathroomDetails(bathroomId).fold(
-            onSuccess = { details ->
-                val result = mapFromDTOToDomain(details)
-                BathroomDetailsResult.Success(data = result)
-            },
-            onFailure = {
-                BathroomDetailsResult.Failed
-            }
-        )
+        return withContext(Dispatchers.IO) {
+            val isAdded = localBookmarksDataSource.isAdded(bathroomId)
+            Log.d("BOOKMARKED is added:", isAdded.toString())
+            dataSource.getBathroomDetails(bathroomId).fold(
+                onSuccess = { details ->
+                    val result = mapFromDTOToDomain(details, isAdded)
+                    BathroomDetailsResult.Success(data = result)
+                },
+                onFailure = {
+                    BathroomDetailsResult.Failed
+                }
+            )
+        }
     }
 
-    private fun mapFromDTOToDomain(dto: BathroomDTO): BathroomDetails {
+    private fun mapFromDTOToDomain(dto: BathroomDTO, isAdded: Boolean): BathroomDetails {
         return BathroomDetails(
             id = dto.id.orEmpty(),
             title = dto.title.orEmpty(),
@@ -48,6 +57,7 @@ class BathroomsRepositoryImpl @Inject constructor(
             price = dto.price.orEmpty(),
             duration = dto.duration.orEmpty(),
             gallery = dto.images,
+            isBookmarked = isAdded
         )
     }
 }
