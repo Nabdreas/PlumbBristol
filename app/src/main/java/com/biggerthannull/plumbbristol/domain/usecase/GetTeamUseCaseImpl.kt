@@ -8,6 +8,8 @@ class GetTeamUseCaseImpl @Inject constructor(
     private val repo: TeamRepository
 ): GetTeamUseCase {
     override suspend fun execute(): List<Employee> {
-        return repo.getTeam()
+        return repo.getTeam().filter {
+            it.photoUrl.isNotEmpty()
+        }
     }
 }
