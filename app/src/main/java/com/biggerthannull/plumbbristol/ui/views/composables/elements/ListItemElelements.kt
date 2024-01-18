@@ -15,7 +15,7 @@ fun ListTitle(modifier: Modifier, text: String, color: Color) {
 
 @Composable
 fun ListDescription(modifier: Modifier, text: String, color: Color) {
-    Text(text = text, modifier = modifier, color = color, fontSize = 12.sp)
+    Text(text = text, modifier = modifier, color = color, fontSize = 14.sp)
 }
 
 @Composable

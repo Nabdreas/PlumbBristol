@@ -4,11 +4,16 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomOverview
@@ -28,7 +33,14 @@ fun PrimaryListItemComponent(data: BathroomOverview, onClick: (itemId: String) -
             }),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        IconImageElement(url = data.coverImage)
+        IconImageElement(
+            url = data.coverImage,
+            modifier = Modifier
+                .padding(8.dp)
+                .size(84.dp)
+                .clip(RoundedCornerShape(corner = CornerSize(16.dp))),
+            scale = ContentScale.Crop
+        )
         ListTitle(
             modifier = Modifier
                 .fillMaxWidth(),
