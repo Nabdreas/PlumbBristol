@@ -3,6 +3,7 @@ package com.biggerthannull.plumbbristol.data.datasource
 import com.biggerthannull.plumbbristol.data.datasource.model.BathroomDTO
 import com.biggerthannull.plumbbristol.data.di.NamedParams.BATHROOMS
 import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
@@ -13,7 +14,7 @@ class BathroomsDataSourceImpl @Inject constructor(
 ) : BathroomsDataSource {
     override suspend fun getBathrooms(): Result<List<BathroomDTO>> {
         return try {
-            val snapshot = collection.get().await()
+            val snapshot = collection.orderBy("date", Query.Direction.DESCENDING).get().await()
             val result = parseBathroomsSnapshotToDTO(snapshot)
             Result.success(result)
         } catch (e: Exception) {
