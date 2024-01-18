@@ -39,6 +39,7 @@ object DataTestData {
     )
 
     val bathroomDetails = BathroomDetails(
+        id = "id",
         title = "Top bathroom",
         description = "incredible handy works",
         price = "£1500",

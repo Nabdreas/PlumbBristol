@@ -1,0 +1,18 @@
+package com.biggerthannull.plumbbristol.data.datasource
+
+import com.biggerthannull.plumbbristol.data.database.room.dao.BookmarksDao
+import com.biggerthannull.plumbbristol.data.database.room.entity.BathroomEntity
+import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
+
+class LocalBathroomsDataSourceImpl @Inject constructor(
+    private val dao: BookmarksDao
+): LocalBathroomsDataSource {
+    override suspend fun addBookmarkedBathroom(data: BathroomEntity) {
+        dao.upsertBookmarkedBathroom(data)
+    }
+
+    override suspend fun observeBookmarkedBathrooms(): Flow<List<BathroomEntity>> {
+        return dao.getBookmarkedBathrooms()
+    }
+}

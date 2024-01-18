@@ -12,6 +12,6 @@ sealed class BottomNavItems(var title: String, var path: String, val icon: Image
     data object Home: BottomNavItems("Home", BottomNavPaths.HOME, Icons.Filled.Home)
     data object Services: BottomNavItems("Services", BottomNavPaths.SERVICES, Icons.Filled.Build)
     data object Team: BottomNavItems("Team", BottomNavPaths.TEAM, Icons.Filled.Face)
-    data object ContactUs: BottomNavItems("Contact", BottomNavPaths.CONTACT_US, Icons.Filled.Info)
+    data object Profile: BottomNavItems("Profile", BottomNavPaths.PROFILE, Icons.Filled.Info)
 
 }

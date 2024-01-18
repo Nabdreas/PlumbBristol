@@ -42,6 +42,7 @@ class BathroomsRepositoryImpl @Inject constructor(
 
     private fun mapFromDTOToDomain(dto: BathroomDTO): BathroomDetails {
         return BathroomDetails(
+            id = dto.id.orEmpty(),
             title = dto.title.orEmpty(),
             description = dto.description.orEmpty(),
             price = dto.price.orEmpty(),

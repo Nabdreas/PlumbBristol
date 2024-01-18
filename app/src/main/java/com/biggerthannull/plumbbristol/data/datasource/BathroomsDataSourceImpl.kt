@@ -28,7 +28,12 @@ class BathroomsDataSourceImpl @Inject constructor(
             if (result == null) {
                 Result.failure(Exception("Something failed"))
             } else {
-                Result.success(result)
+
+                Result.success(
+                    result.copy(
+                        id = snapshot.id
+                    )
+                )
             }
         } catch (e: Exception) {
             Result.failure(e)

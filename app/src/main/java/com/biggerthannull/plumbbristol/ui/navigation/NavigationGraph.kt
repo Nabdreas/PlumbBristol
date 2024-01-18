@@ -12,13 +12,15 @@ import androidx.navigation.navArgument
 import com.biggerthannull.plumbbristol.ui.navigation.models.NavArguments.BATHROOM_ID
 import com.biggerthannull.plumbbristol.ui.navigation.models.NavPaths
 import com.biggerthannull.plumbbristol.ui.views.composables.screens.BathroomDetailsScreen
-import com.biggerthannull.plumbbristol.ui.views.composables.screens.ContactUsScreen
+import com.biggerthannull.plumbbristol.ui.views.composables.screens.ProfileScreen
 import com.biggerthannull.plumbbristol.ui.views.composables.screens.HomeScreen
 import com.biggerthannull.plumbbristol.ui.views.composables.screens.ServicesScreen
 import com.biggerthannull.plumbbristol.ui.views.composables.screens.TeamScreen
 import com.biggerthannull.plumbbristol.ui.views.viewmodels.BathroomDetailsViewModel
 import com.biggerthannull.plumbbristol.ui.views.viewmodels.HomeViewModel
+import com.biggerthannull.plumbbristol.ui.views.viewmodels.ProfileViewModel
 import com.biggerthannull.plumbbristol.ui.views.viewmodels.TeamViewModel
+import com.biggerthannull.plumbbristol.ui.views.viewmodels.events.DetailsUserEvents
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
@@ -31,8 +33,10 @@ fun NavigationGraph(navController: NavHostController) {
         composable(BottomNavItems.Services.path) {
             ServicesScreen()
         }
-        composable(BottomNavItems.ContactUs.path) {
-            ContactUsScreen()
+        composable(BottomNavItems.Profile.path) {
+            val viewModel: ProfileViewModel = hiltViewModel()
+            val uiState by viewModel.uiState.collectAsState()
+            ProfileScreen(uiState)
         }
         composable(BottomNavItems.Team.path) {
             val viewModel: TeamViewModel = hiltViewModel()
@@ -45,7 +49,8 @@ fun NavigationGraph(navController: NavHostController) {
         ) {
             val viewModel: BathroomDetailsViewModel = hiltViewModel()
             val uiState by viewModel.uiState.collectAsState()
-            BathroomDetailsScreen(uiState)
+            val events = viewModel as DetailsUserEvents
+            BathroomDetailsScreen(uiState, events)
         }
     }
 }

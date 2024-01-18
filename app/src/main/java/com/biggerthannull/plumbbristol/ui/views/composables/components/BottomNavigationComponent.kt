@@ -24,7 +24,7 @@ fun BottomNavigationComponent(navController: NavController) {
         BottomNavItems.Home,
         BottomNavItems.Services,
         BottomNavItems.Team,
-        BottomNavItems.ContactUs
+        BottomNavItems.Profile
     )
     BottomNavigation(
         backgroundColor = Color.Black

@@ -4,5 +4,5 @@ object BottomNavPaths {
     const val HOME = "home"
     const val SERVICES = "services"
     const val TEAM = "team"
-    const val CONTACT_US = "contactUs"
+    const val PROFILE = "profile"
 }

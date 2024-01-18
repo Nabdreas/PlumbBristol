@@ -4,7 +4,6 @@ import com.biggerthannull.plumbbristol.domain.usecase.models.Employee
 
 sealed class TeamUIState {
     data object Loading: TeamUIState()
-
     class Success(val data: List<Employee>): TeamUIState()
     data object Failed: TeamUIState()
 }
