@@ -24,7 +24,6 @@ android {
         }
 
         buildConfigField("String", "FLICKR_API_KEY", "\"${project.property("flickrApiKey")}\"")
-        buildConfigField("String", "FLICKR_SECRET", "\"${project.property("flickrSecret")}\"")
     }
 
     buildTypes {
