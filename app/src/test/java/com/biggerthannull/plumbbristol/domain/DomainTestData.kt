@@ -39,6 +39,6 @@ object DomainTestData {
     )
 
     val discoveredBathrooms = DiscoveredBathrooms(
-        imageUrl = "https://kitchensplusbathrooms.co.uk/wp-content/uploads/2023/05/USED-KB_11.22-31-resized.webp"
+        imageUrl = "https://farm66.staticflickr.com/65535/52540119208_264575785c.jpg"
     )
 }

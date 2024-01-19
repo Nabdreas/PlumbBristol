@@ -94,9 +94,7 @@ class BathroomsRepositoryTest {
     @Test
     fun `should return a list of discovered bathrooms`() = runTest {
         // Given
-        coEvery { discoverDataSource.discoverBathrooms() } returns Result.success(
-            listOf(discoveredBathroomsDTO)
-        )
+        coEvery { discoverDataSource.discoverBathrooms() } returns Result.success(discoveredBathroomsDTO )
 
         // When
         val result = sut.discoverBathrooms()

@@ -3,6 +3,8 @@ package com.biggerthannull.plumbbristol.data
 import com.biggerthannull.plumbbristol.data.datasource.model.BathroomDTO
 import com.biggerthannull.plumbbristol.data.datasource.model.DiscoveredBathroomsDTO
 import com.biggerthannull.plumbbristol.data.datasource.model.EmployeeDTO
+import com.biggerthannull.plumbbristol.data.datasource.model.PhotoDTO
+import com.biggerthannull.plumbbristol.data.datasource.model.PhotosDTO
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomDetails
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomOverview
 import com.biggerthannull.plumbbristol.domain.usecase.models.Employee
@@ -50,6 +52,17 @@ object DataTestData {
     )
 
     val discoveredBathroomsDTO = DiscoveredBathroomsDTO(
-        imageUrl = "https://kitchensplusbathrooms.co.uk/wp-content/uploads/2023/05/USED-KB_11.22-31-resized.webp"
+        photos = PhotosDTO(
+            photo = listOf(
+                PhotoDTO(
+                    id = "52540119208",
+                    owner = "17325081",
+                    secret = "264575785c",
+                    server = "65535",
+                    farm = 66,
+                    title = "StGeorgePark-2101",
+                )
+            )
+        )
     )
 }
