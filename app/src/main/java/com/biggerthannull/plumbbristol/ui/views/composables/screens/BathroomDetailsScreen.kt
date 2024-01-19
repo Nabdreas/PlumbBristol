@@ -35,8 +35,6 @@ import com.biggerthannull.plumbbristol.ui.views.viewmodels.state.BathroomDetails
 @Composable
 fun BathroomDetailsScreen(uiState: BathroomDetailsUIState, userEvents: DetailsUserEvents) {
     val scrollableState = rememberScrollState()
-    var isAdded by remember { mutableStateOf(false) }
-
     Column(
         modifier = Modifier
             .background(Color.DarkGray)
@@ -44,11 +42,12 @@ fun BathroomDetailsScreen(uiState: BathroomDetailsUIState, userEvents: DetailsUs
     ) {
         when (uiState) {
             is Success -> {
+                var isAdded by remember { mutableStateOf(uiState.bathroom.isBookmarked) }
                 GalleryHorizontalListComponent(data = uiState.bathroom.gallery)
                 IconToggleButton(
                     checked = isAdded,
                     onCheckedChange = {
-                        userEvents.bookmarkBathroom(uiState.bathroom.copy(isBookmarked = !isAdded))
+                        userEvents.bookmarkBathroom(uiState.bathroom.copy(isBookmarked = isAdded))
                         isAdded = !isAdded
                     }
                 ) {

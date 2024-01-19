@@ -32,7 +32,8 @@ class BookmarksRepositoryImpl @Inject constructor(
                     duration = bathroom.duration,
                     gallery = bathroom.images,
                     price = bathroom.price,
-                    title = bathroom.title
+                    title = bathroom.title,
+                    isBookmarked = true
                 )
             }
         }

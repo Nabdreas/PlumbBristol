@@ -7,5 +7,5 @@ data class BathroomDetails(
     val price: String,
     val duration: String,
     val gallery: List<String>,
-    val isBookmarked: Boolean = false
+    val isBookmarked: Boolean
 )

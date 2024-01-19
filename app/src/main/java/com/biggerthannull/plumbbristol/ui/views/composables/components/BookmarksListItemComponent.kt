@@ -51,7 +51,8 @@ fun BookmarksListItemComponentPreview() {
                 description = "incredible handy works",
                 price = "£1500",
                 duration = "7 days",
-                gallery = listOf("https://www.webdesign.org/img_articles/12668/bob_builder_34.jpg")
+                gallery = listOf("https://www.webdesign.org/img_articles/12668/bob_builder_34.jpg"),
+                isBookmarked = false
             )
         )
     }
