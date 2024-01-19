@@ -24,7 +24,7 @@ import com.biggerthannull.plumbbristol.ui.views.viewmodels.state.ProfileUIState
 fun ProfileScreen(uiState: ProfileUIState) {
     Column(
         modifier = Modifier
-            .background(Color.LightGray)
+            .background(Color.DarkGray)
             .fillMaxSize()
     ) {
         when (uiState) {

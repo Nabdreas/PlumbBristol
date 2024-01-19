@@ -15,7 +15,7 @@ import com.biggerthannull.plumbbristol.ui.theme.PlumbBristolTheme
 fun ServicesScreen() {
     Column(
         modifier = Modifier
-            .background(Color.LightGray)
+            .background(Color.DarkGray)
             .fillMaxWidth()
     ) {
         Text(

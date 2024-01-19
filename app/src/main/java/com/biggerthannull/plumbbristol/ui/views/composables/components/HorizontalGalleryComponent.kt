@@ -36,7 +36,7 @@ fun HorizontalGalleryComponent(images: List<String>) {
                             .padding(16.dp)
                             .size(150.dp)
                             .clip(RoundedCornerShape(corner = CornerSize(16.dp))),
-                        scale = ContentScale.FillWidth
+                        scale = ContentScale.Crop
                     )
                 }
             }
