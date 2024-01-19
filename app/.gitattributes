@@ -1,0 +1,2 @@
+; google-services.json filter=git-crypt diff=git-crypt
+; ideally i would crypt and decrypt these keys as well as any other important API keys

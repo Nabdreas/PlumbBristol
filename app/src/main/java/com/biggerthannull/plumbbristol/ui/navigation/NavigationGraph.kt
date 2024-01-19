@@ -12,11 +12,13 @@ import androidx.navigation.navArgument
 import com.biggerthannull.plumbbristol.ui.navigation.models.NavArguments.BATHROOM_ID
 import com.biggerthannull.plumbbristol.ui.navigation.models.NavPaths
 import com.biggerthannull.plumbbristol.ui.views.composables.screens.BathroomDetailsScreen
+import com.biggerthannull.plumbbristol.ui.views.composables.screens.DiscoverScreen
 import com.biggerthannull.plumbbristol.ui.views.composables.screens.ProfileScreen
 import com.biggerthannull.plumbbristol.ui.views.composables.screens.HomeScreen
 import com.biggerthannull.plumbbristol.ui.views.composables.screens.ServicesScreen
 import com.biggerthannull.plumbbristol.ui.views.composables.screens.TeamScreen
 import com.biggerthannull.plumbbristol.ui.views.viewmodels.BathroomDetailsViewModel
+import com.biggerthannull.plumbbristol.ui.views.viewmodels.DiscoverViewModel
 import com.biggerthannull.plumbbristol.ui.views.viewmodels.HomeViewModel
 import com.biggerthannull.plumbbristol.ui.views.viewmodels.ProfileViewModel
 import com.biggerthannull.plumbbristol.ui.views.viewmodels.TeamViewModel
@@ -29,6 +31,11 @@ fun NavigationGraph(navController: NavHostController) {
             val viewModel: HomeViewModel = hiltViewModel()
             val uiState by viewModel.uiState.collectAsState()
             HomeScreen(uiState, navController)
+        }
+        composable(BottomNavItems.Discover.path) {
+            val viewModel: DiscoverViewModel = hiltViewModel()
+            val uiState by viewModel.uiState.collectAsState()
+            DiscoverScreen(uiState = uiState)
         }
         composable(BottomNavItems.Services.path) {
             ServicesScreen()

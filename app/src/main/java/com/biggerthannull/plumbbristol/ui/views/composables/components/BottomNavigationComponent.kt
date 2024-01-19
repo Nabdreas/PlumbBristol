@@ -22,6 +22,7 @@ fun BottomNavigationComponent(navController: NavController) {
 
     val items = listOf(
         BottomNavItems.Home,
+        BottomNavItems.Discover,
         BottomNavItems.Services,
         BottomNavItems.Team,
         BottomNavItems.Profile

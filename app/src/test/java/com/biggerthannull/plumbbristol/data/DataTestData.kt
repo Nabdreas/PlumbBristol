@@ -1,6 +1,7 @@
 package com.biggerthannull.plumbbristol.data
 
 import com.biggerthannull.plumbbristol.data.datasource.model.BathroomDTO
+import com.biggerthannull.plumbbristol.data.datasource.model.DiscoveredBathroomsDTO
 import com.biggerthannull.plumbbristol.data.datasource.model.EmployeeDTO
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomDetails
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomOverview
@@ -38,12 +39,17 @@ object DataTestData {
         coverImage = "https://www.webdesign.org/img_articles/12668/bob_builder_34.jpg"
     )
 
-    val bathroomDetails = BathroomDetails(
+    fun bathroomDetails(isBookmarked: Boolean) = BathroomDetails(
         id = "id",
         title = "Top bathroom",
         description = "incredible handy works",
         price = "£1500",
         duration = "7 days",
-        gallery = listOf("https://www.webdesign.org/img_articles/12668/bob_builder_34.jpg")
+        gallery = listOf("https://www.webdesign.org/img_articles/12668/bob_builder_34.jpg"),
+        isBookmarked = isBookmarked
+    )
+
+    val discoveredBathroomsDTO = DiscoveredBathroomsDTO(
+        imageUrl = "https://kitchensplusbathrooms.co.uk/wp-content/uploads/2023/05/USED-KB_11.22-31-resized.webp"
     )
 }

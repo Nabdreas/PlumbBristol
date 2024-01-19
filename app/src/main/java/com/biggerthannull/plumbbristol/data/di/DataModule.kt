@@ -4,6 +4,8 @@ import com.biggerthannull.plumbbristol.data.datasource.BathroomsRemoteDataSource
 import com.biggerthannull.plumbbristol.data.datasource.BathroomsRemoteDataSourceImpl
 import com.biggerthannull.plumbbristol.data.datasource.BathroomsLocalDataSource
 import com.biggerthannull.plumbbristol.data.datasource.BathroomsLocalDataSourceImpl
+import com.biggerthannull.plumbbristol.data.datasource.DiscoverDataSource
+import com.biggerthannull.plumbbristol.data.datasource.DiscoverDataSourceImpl
 import com.biggerthannull.plumbbristol.data.datasource.TeamDataSource
 import com.biggerthannull.plumbbristol.data.datasource.TeamDataSourceImpl
 import com.biggerthannull.plumbbristol.data.repository.BathroomsRepositoryImpl
@@ -38,4 +40,7 @@ interface DataModule {
 
     @Binds
     fun bindsLocalBathroomsDataSource(impl: BathroomsLocalDataSourceImpl): BathroomsLocalDataSource
+
+    @Binds
+    fun bindsDiscoverDataSource(impl: DiscoverDataSourceImpl): DiscoverDataSource
 }

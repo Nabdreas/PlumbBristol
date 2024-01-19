@@ -18,7 +18,7 @@ class GetBathroomDetailsUseCaseTest {
     @Test
     fun `should get bathroom details`() = runTest {
         coEvery { repo.getBathroomDetails("bathroomId") } returns
-                BathroomDetailsResult.Success(DomainTestData.bathroomDetails)
+                BathroomDetailsResult.Success(DomainTestData.bathroomDetails(false))
 
         val result = sut.execute("bathroomId")
 

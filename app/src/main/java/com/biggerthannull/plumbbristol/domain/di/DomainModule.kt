@@ -6,6 +6,8 @@ import com.biggerthannull.plumbbristol.domain.usecase.GetBathroomDetailsUseCase
 import com.biggerthannull.plumbbristol.domain.usecase.GetBathroomDetailsUseCaseImpl
 import com.biggerthannull.plumbbristol.domain.usecase.GetBathroomsUseCase
 import com.biggerthannull.plumbbristol.domain.usecase.GetBathroomsUseCaseImpl
+import com.biggerthannull.plumbbristol.domain.usecase.GetInspirationalImagesUseCase
+import com.biggerthannull.plumbbristol.domain.usecase.GetInspirationalImagesUseCaseImpl
 import com.biggerthannull.plumbbristol.domain.usecase.GetTeamUseCase
 import com.biggerthannull.plumbbristol.domain.usecase.GetTeamUseCaseImpl
 import com.biggerthannull.plumbbristol.domain.usecase.ObserveBookmarkedBathroomsUseCase
@@ -37,4 +39,7 @@ interface DomainModule {
 
     @Binds
     fun bindRemoveBathroomFromBookmarksUseCase(impl: RemoveBathroomFromBookmarksUseCaseImpl): RemoveBathroomFromBookmarksUseCase
+
+    @Binds
+    fun bindGetInspirationalImagesUseCase(impl: GetInspirationalImagesUseCaseImpl): GetInspirationalImagesUseCase
 }
