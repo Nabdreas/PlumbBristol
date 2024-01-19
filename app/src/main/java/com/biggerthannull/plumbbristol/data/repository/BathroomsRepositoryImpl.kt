@@ -4,6 +4,7 @@ import com.biggerthannull.plumbbristol.data.datasource.BathroomsRemoteDataSource
 import com.biggerthannull.plumbbristol.data.datasource.BathroomsLocalDataSource
 import com.biggerthannull.plumbbristol.data.datasource.DiscoverDataSource
 import com.biggerthannull.plumbbristol.data.datasource.model.BathroomDTO
+import com.biggerthannull.plumbbristol.data.datasource.model.PhotoDTO
 import com.biggerthannull.plumbbristol.domain.repository.BathroomsRepository
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomDetails
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomDetailsResult
@@ -56,9 +57,11 @@ class BathroomsRepositoryImpl @Inject constructor(
     override suspend fun discoverBathrooms(): DiscoverBathroomsResult {
         return discoverDataSource.discoverBathrooms().fold(
             onSuccess = { images ->
-                val result = images.map { image ->
-                    DiscoveredBathrooms(imageUrl = image.imageUrl)
+                val result = images.photos.photo.map { dto ->
+                    val imageUrl = buildImageUrl(dto)
+                    DiscoveredBathrooms(imageUrl = imageUrl)
                 }
+
                 DiscoverBathroomsResult.Success(data = result)
             },
             onFailure = {
@@ -78,5 +81,14 @@ class BathroomsRepositoryImpl @Inject constructor(
             gallery = dto.images,
             isBookmarked = isAdded
         )
+    }
+
+    private fun buildImageUrl(photo: PhotoDTO): String {
+        val farmId = photo.farm
+        val serverId = photo.server
+        val photoId = photo.id
+        val secret = photo.secret
+
+        return "https://farm$farmId.staticflickr.com/$serverId/${photoId}_$secret.jpg"
     }
 }
