@@ -9,9 +9,9 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 import javax.inject.Named
 
-class BathroomsDataSourceImpl @Inject constructor(
+class BathroomsRemoteDataSourceImpl @Inject constructor(
     @Named(BATHROOMS) private val collection: CollectionReference
-) : BathroomsDataSource {
+) : BathroomsRemoteDataSource {
     override suspend fun getBathrooms(): Result<List<BathroomDTO>> {
         return try {
             val snapshot = collection.orderBy("date", Query.Direction.DESCENDING).get().await()

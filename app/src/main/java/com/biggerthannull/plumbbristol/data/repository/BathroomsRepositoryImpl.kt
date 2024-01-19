@@ -1,8 +1,8 @@
 package com.biggerthannull.plumbbristol.data.repository
 
 import android.util.Log
-import com.biggerthannull.plumbbristol.data.datasource.BathroomsDataSource
-import com.biggerthannull.plumbbristol.data.datasource.LocalBathroomsDataSource
+import com.biggerthannull.plumbbristol.data.datasource.BathroomsRemoteDataSource
+import com.biggerthannull.plumbbristol.data.datasource.BathroomsLocalDataSource
 import com.biggerthannull.plumbbristol.data.datasource.model.BathroomDTO
 import com.biggerthannull.plumbbristol.domain.repository.BathroomsRepository
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomDetails
@@ -13,8 +13,8 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class BathroomsRepositoryImpl @Inject constructor(
-    private val dataSource: BathroomsDataSource,
-    private val localBookmarksDataSource: LocalBathroomsDataSource
+    private val dataSource: BathroomsRemoteDataSource,
+    private val localBookmarksDataSource: BathroomsLocalDataSource
 ) : BathroomsRepository {
     override suspend fun getBathrooms(): List<BathroomOverview> {
         return dataSource.getBathrooms().fold(

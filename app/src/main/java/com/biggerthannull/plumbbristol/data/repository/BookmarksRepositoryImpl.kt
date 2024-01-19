@@ -1,7 +1,7 @@
 package com.biggerthannull.plumbbristol.data.repository
 
 import com.biggerthannull.plumbbristol.data.database.room.entity.BathroomEntity
-import com.biggerthannull.plumbbristol.data.datasource.LocalBathroomsDataSource
+import com.biggerthannull.plumbbristol.data.datasource.BathroomsLocalDataSource
 import com.biggerthannull.plumbbristol.domain.repository.BookmarksRepository
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomDetails
 import kotlinx.coroutines.flow.Flow
@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class BookmarksRepositoryImpl @Inject constructor(
-    private val localBathroomsDataSource: LocalBathroomsDataSource
+    private val bathroomsLocalDataSource: BathroomsLocalDataSource
 ) : BookmarksRepository {
     override suspend fun bookmarkBathroom(details: BathroomDetails) {
         val bathroomEntity = BathroomEntity(
@@ -20,11 +20,11 @@ class BookmarksRepositoryImpl @Inject constructor(
             price = details.price,
             title = details.title
         )
-        localBathroomsDataSource.addBookmarkedBathroom(bathroomEntity)
+        bathroomsLocalDataSource.addBookmarkedBathroom(bathroomEntity)
     }
 
     override suspend fun observeBookmarkedBathrooms(): Flow<List<BathroomDetails>> {
-        return localBathroomsDataSource.observeBookmarkedBathrooms().map { entity ->
+        return bathroomsLocalDataSource.observeBookmarkedBathrooms().map { entity ->
             entity.map { bathroom ->
                 BathroomDetails(
                     id = bathroom.id,
@@ -39,6 +39,6 @@ class BookmarksRepositoryImpl @Inject constructor(
     }
 
     override suspend fun removeBookmarkedBathroom(id: String) {
-        localBathroomsDataSource.removeBookmarkedBathroom(id)
+        bathroomsLocalDataSource.removeBookmarkedBathroom(id)
     }
 }

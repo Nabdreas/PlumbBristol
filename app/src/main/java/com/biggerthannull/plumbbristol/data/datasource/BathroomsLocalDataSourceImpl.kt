@@ -5,9 +5,9 @@ import com.biggerthannull.plumbbristol.data.database.room.entity.BathroomEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class LocalBathroomsDataSourceImpl @Inject constructor(
+class BathroomsLocalDataSourceImpl @Inject constructor(
     private val dao: BookmarksDao
-): LocalBathroomsDataSource {
+): BathroomsLocalDataSource {
     override suspend fun addBookmarkedBathroom(data: BathroomEntity) {
         dao.upsertBookmarkedBathroom(data)
     }

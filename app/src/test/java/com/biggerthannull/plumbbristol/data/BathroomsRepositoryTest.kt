@@ -1,6 +1,7 @@
 package com.biggerthannull.plumbbristol.data
 
-import com.biggerthannull.plumbbristol.data.datasource.BathroomsDataSource
+import com.biggerthannull.plumbbristol.data.datasource.BathroomsLocalDataSource
+import com.biggerthannull.plumbbristol.data.datasource.BathroomsRemoteDataSource
 import com.biggerthannull.plumbbristol.data.repository.BathroomsRepositoryImpl
 import com.biggerthannull.plumbbristol.domain.repository.BathroomsRepository
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomDetailsResult
@@ -13,15 +14,16 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
 class BathroomsRepositoryTest {
-    private val dataSource: BathroomsDataSource = mockk()
-    private val sut: BathroomsRepository = BathroomsRepositoryImpl(dataSource)
+    private val remoteDataSource: BathroomsRemoteDataSource = mockk()
+    private val localDataSource: BathroomsLocalDataSource = mockk()
+    private val sut: BathroomsRepository = BathroomsRepositoryImpl(remoteDataSource, localDataSource)
 
     private val bathroomId = "bathroomId"
 
     @Test
     fun `should get list of bathrooms`() = runTest {
         // Given
-        coEvery { dataSource.getBathrooms() } returns Result.success(
+        coEvery { remoteDataSource.getBathrooms() } returns Result.success(
             listOf(DataTestData.bathroomDTO)
         )
 
@@ -35,7 +37,7 @@ class BathroomsRepositoryTest {
     @Test
     fun `should return empty list when failed to get bathrooms`() = runTest {
         // Given
-        coEvery { dataSource.getBathrooms() } returns Result.failure(Exception("failed"))
+        coEvery { remoteDataSource.getBathrooms() } returns Result.failure(Exception("failed"))
 
         // When
         val result = sut.getBathrooms()
@@ -47,7 +49,8 @@ class BathroomsRepositoryTest {
     @Test
     fun `should return bathroom details successfully`() = runTest {
         // Given
-        coEvery { dataSource.getBathroomDetails(bathroomId) } returns Result.success(DataTestData.bathroomDTO)
+        coEvery { remoteDataSource.getBathroomDetails(bathroomId) } returns Result.success(DataTestData.bathroomDTO)
+        coEvery { localDataSource.isAdded(bathroomId) } returns true
 
         // When
         val result = sut.getBathroomDetails(bathroomId)
@@ -60,7 +63,8 @@ class BathroomsRepositoryTest {
     @Test
     fun `should NOT return bathroom details successfully`() = runTest {
         // Given
-        coEvery { dataSource.getBathroomDetails(bathroomId) } returns Result.failure(Exception("failed"))
+        coEvery { remoteDataSource.getBathroomDetails(bathroomId) } returns Result.failure(Exception("failed"))
+        coEvery { localDataSource.isAdded(bathroomId) } returns false
 
         // When
         val result = sut.getBathroomDetails(bathroomId)

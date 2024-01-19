@@ -48,7 +48,7 @@ fun BathroomDetailsScreen(uiState: BathroomDetailsUIState, userEvents: DetailsUs
                 IconToggleButton(
                     checked = isAdded,
                     onCheckedChange = {
-                        userEvents.bookmarkBathroom(uiState.bathroom)
+                        userEvents.bookmarkBathroom(uiState.bathroom.copy(isBookmarked = !isAdded))
                         isAdded = !isAdded
                     }
                 ) {
