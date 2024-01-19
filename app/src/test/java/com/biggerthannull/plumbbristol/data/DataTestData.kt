@@ -65,4 +65,19 @@ object DataTestData {
             )
         )
     )
+
+    val expectedPhotoJSONResponse = DiscoveredBathroomsDTO(
+        photos = PhotosDTO(
+            photo = listOf(
+                PhotoDTO(
+                    id = "52540119208",
+                    owner = "17325081",
+                    secret = "264575785c",
+                    server = "65535",
+                    farm = 66,
+                    title = "LuxuryBath",
+                )
+            )
+        )
+    )
 }
