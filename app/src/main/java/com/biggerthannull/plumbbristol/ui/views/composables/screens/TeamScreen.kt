@@ -7,12 +7,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.biggerthannull.plumbbristol.R
 import com.biggerthannull.plumbbristol.ui.theme.PlumbBristolTheme
 import com.biggerthannull.plumbbristol.ui.views.composables.components.SecondaryVerticalListComponent
@@ -23,7 +21,7 @@ import com.biggerthannull.plumbbristol.ui.views.viewmodels.state.TeamUIState
 fun TeamScreen(uiState: TeamUIState) {
     Column(
         modifier = Modifier
-            .background(Color.DarkGray)
+            .background(PlumbBristolTheme.colour.grey800)
             .fillMaxWidth()
     ) {
         when (uiState) {
@@ -34,8 +32,8 @@ fun TeamScreen(uiState: TeamUIState) {
                         .padding(16.dp),
                     text = "Meet the team",
                     textAlign = TextAlign.Center,
-                    color = Color.White,
-                    fontSize = 24.sp
+                    color = PlumbBristolTheme.colour.white,
+                    style = PlumbBristolTheme.typography.h2
                 )
                 SecondaryVerticalListComponent(data = uiState.data)
             }

@@ -2,8 +2,6 @@ package com.biggerthannull.plumbbristol.ui.views.composables.elements
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,7 +36,7 @@ fun IconImagePreview() {
             modifier = Modifier
                 .padding(8.dp)
                 .size(84.dp)
-                .clip(RoundedCornerShape(corner = CornerSize(16.dp))),
+                .clip(PlumbBristolTheme.shapes.large),
             scale = ContentScale.Crop
         )
     }

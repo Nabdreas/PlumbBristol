@@ -6,14 +6,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -31,7 +28,7 @@ fun SecondaryListItemComponent(data: Employee) {
     ) {
         Column(
             Modifier
-                .background(Color.Gray)
+                .background(PlumbBristolTheme.colour.grey700)
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
@@ -41,18 +38,18 @@ fun SecondaryListItemComponent(data: Employee) {
                 modifier = Modifier
                     .padding(16.dp)
                     .size(150.dp)
-                    .clip(RoundedCornerShape(corner = CornerSize(16.dp))),
+                    .clip(PlumbBristolTheme.shapes.large),
                 scale = ContentScale.FillWidth
             )
             ListDescription(
                 modifier = Modifier,
                 text = "Name: ${data.name}",
-                color = Color.White
+                color =PlumbBristolTheme.colour.white
             )
             ListDescription(
                 modifier = Modifier,
                 text = "Position: ${data.position}",
-                color = Color.White
+                color = PlumbBristolTheme.colour.white
             )
         }
     }

@@ -9,7 +9,6 @@ import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomDetails
@@ -25,7 +24,7 @@ fun BookmarksListItemComponent(data: BathroomDetails) {
     ) {
         Column(
             Modifier
-                .background(Color.Gray)
+                .background(PlumbBristolTheme.colour.grey700)
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
@@ -34,7 +33,7 @@ fun BookmarksListItemComponent(data: BathroomDetails) {
             ListDescription(
                 modifier = Modifier.padding(16.dp),
                 text = data.description,
-                color = Color.White
+                color = PlumbBristolTheme.colour.white
             )
         }
     }

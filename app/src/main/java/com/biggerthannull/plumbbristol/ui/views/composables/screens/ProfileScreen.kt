@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -24,7 +23,7 @@ import com.biggerthannull.plumbbristol.ui.views.viewmodels.state.ProfileUIState
 fun ProfileScreen(uiState: ProfileUIState) {
     Column(
         modifier = Modifier
-            .background(Color.DarkGray)
+            .background(PlumbBristolTheme.colour.grey800)
             .fillMaxSize()
     ) {
         when (uiState) {
@@ -34,7 +33,7 @@ fun ProfileScreen(uiState: ProfileUIState) {
                     Text(
                         modifier = Modifier.fillMaxWidth().padding(16.dp),
                         textAlign = TextAlign.Center,
-                        color = Color.Black,
+                        color = PlumbBristolTheme.colour.black,
                         text = stringResource(id = R.string.empty_bookmarks)
                     )
                 } else {
@@ -50,7 +49,7 @@ fun ProfileScreen(uiState: ProfileUIState) {
                 Text(
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
-                    color = Color.Black,
+                    color = PlumbBristolTheme.colour.black,
                     text = stringResource(id = R.string.generic_error_label)
                 )
             }

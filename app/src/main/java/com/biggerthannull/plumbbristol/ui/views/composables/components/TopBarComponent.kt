@@ -5,7 +5,6 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -18,11 +17,11 @@ fun TopBarComponent() {
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = "Plumb Bristol",
-                color = Color.White,
+                color = PlumbBristolTheme.colour.white,
                 textAlign = TextAlign.Center
             )
         },
-        backgroundColor = Color.Black,
+        backgroundColor = PlumbBristolTheme.colour.black,
         elevation = 10.dp
     )
 }

@@ -18,7 +18,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,7 +36,7 @@ fun BathroomDetailsScreen(uiState: BathroomDetailsUIState, userEvents: DetailsUs
     val scrollableState = rememberScrollState()
     Column(
         modifier = Modifier
-            .background(Color.DarkGray)
+            .background(PlumbBristolTheme.colour.grey800)
             .verticalScroll(scrollableState)
     ) {
         when (uiState) {
@@ -52,7 +51,7 @@ fun BathroomDetailsScreen(uiState: BathroomDetailsUIState, userEvents: DetailsUs
                     }
                 ) {
                     Icon(
-                        tint = Color.Red,
+                        tint = PlumbBristolTheme.colour.red,
                         modifier = Modifier.graphicsLayer {
                             scaleX = 1.3f
                             scaleY = 1.3f
@@ -69,7 +68,7 @@ fun BathroomDetailsScreen(uiState: BathroomDetailsUIState, userEvents: DetailsUs
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 8.dp, horizontal = 16.dp),
-                    color = Color.White,
+                    color = PlumbBristolTheme.colour.white,
                     text = uiState.bathroom.description,
                     textAlign = TextAlign.Start
                 )

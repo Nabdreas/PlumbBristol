@@ -5,29 +5,32 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
 import com.biggerthannull.plumbbristol.ui.theme.PlumbBristolTheme
 
 @Composable
 fun ListTitle(modifier: Modifier, text: String, color: Color) {
-    Text(text = text, modifier = modifier, color = color, fontSize = 20.sp)
+    Text(text = text, modifier = modifier, color = color, style = PlumbBristolTheme.typography.h3)
 }
 
 @Composable
 fun ListDescription(modifier: Modifier, text: String, color: Color) {
-    Text(text = text, modifier = modifier, color = color, fontSize = 14.sp)
+    Text(text = text, modifier = modifier, color = color, style = PlumbBristolTheme.typography.body)
 }
 
 @Composable
 fun ListExtraInfo(text: String) {
-    Text(text = text)
+    Text(text = text, style = PlumbBristolTheme.typography.basicText)
 }
 
 @Preview
 @Composable
 fun ListTitlePreview() {
     PlumbBristolTheme {
-        ListTitle(modifier = Modifier, text = "I am title", color = Color.White)
+        ListTitle(
+            modifier = Modifier,
+            text = "I am title",
+            color = PlumbBristolTheme.colour.white
+        )
     }
 }
 
@@ -35,7 +38,7 @@ fun ListTitlePreview() {
 @Composable
 fun ListDescriptionPreview() {
     PlumbBristolTheme {
-        ListDescription(modifier = Modifier, text = "I am description", color = Color.White)
+        ListDescription(modifier = Modifier, text = "I am description", color = PlumbBristolTheme.colour.white)
     }
 }
 

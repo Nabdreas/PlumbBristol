@@ -8,14 +8,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.biggerthannull.plumbbristol.ui.navigation.BottomNavItems
+import com.biggerthannull.plumbbristol.ui.theme.PlumbBristolTheme
 
 @Composable
 fun BottomNavigationComponent(navController: NavController) {
@@ -28,7 +25,7 @@ fun BottomNavigationComponent(navController: NavController) {
         BottomNavItems.Profile
     )
     BottomNavigation(
-        backgroundColor = Color.Black
+        backgroundColor = PlumbBristolTheme.colour.black
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
@@ -37,12 +34,12 @@ fun BottomNavigationComponent(navController: NavController) {
             BottomNavigationItem(
                 label = {
                     Text(
-                        text = bottomBarItem.title, color = Color.White, style = TextStyle(
-                            fontWeight = FontWeight.Bold, fontSize = 12.sp
-                        )
+                        text = bottomBarItem.title,
+                        color = PlumbBristolTheme.colour.white,
+                        style = PlumbBristolTheme.typography.basicText
                     )
                 },
-                selectedContentColor = Color.White,
+                selectedContentColor = PlumbBristolTheme.colour.white,
                 selected = currentRoute == bottomBarItem.path,
                 alwaysShowLabel = false,
                 onClick = {
@@ -57,7 +54,7 @@ fun BottomNavigationComponent(navController: NavController) {
                 icon = {
                     Icon(
                         imageVector = bottomBarItem.icon,
-                        tint = Color.White,
+                        tint = PlumbBristolTheme.colour.white,
                         contentDescription = bottomBarItem.title,
                         modifier = Modifier.size(24.dp)
                     )
