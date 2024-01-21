@@ -10,7 +10,7 @@ interface DiscoverApi {
     suspend fun getImages(
         @Query("method") method: String = "flickr.photos.search",
         @Query("api_key") apiKey: String,
-        @Query("text") text: String = "bathroom ideas",
+        @Query("text") text: String = "bathroomideas, inspiration",
         @Query("tags") tags: String = "bathroomideas",
         @Query("content_types") contentType: Int = 0,
         @Query("format") format: String = "json",
