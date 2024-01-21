@@ -1,12 +1,9 @@
 package com.biggerthannull.plumbbristol.ui.views.composables.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,37 +18,28 @@ import com.biggerthannull.plumbbristol.ui.views.composables.elements.ListDescrip
 
 @Composable
 fun SecondaryListItemComponent(data: Employee) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 16.dp)
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
     ) {
-        Column(
-            Modifier
-                .background(PlumbBristolTheme.colour.grey700)
-                .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-        ) {
-            IconImageElement(
-                url = data.photoUrl,
-                modifier = Modifier
-                    .padding(16.dp)
-                    .size(150.dp)
-                    .clip(PlumbBristolTheme.shapes.large),
-                scale = ContentScale.FillWidth
-            )
-            ListDescription(
-                modifier = Modifier,
-                text = "Name: ${data.name}",
-                color =PlumbBristolTheme.colour.white
-            )
-            ListDescription(
-                modifier = Modifier,
-                text = "Position: ${data.position}",
-                color = PlumbBristolTheme.colour.white
-            )
-        }
+        IconImageElement(
+            url = data.photoUrl,
+            modifier = Modifier
+                .padding(16.dp)
+                .size(150.dp)
+                .clip(PlumbBristolTheme.shapes.large),
+            scale = ContentScale.FillWidth
+        )
+        ListDescription(
+            modifier = Modifier,
+            text = data.name,
+            color = PlumbBristolTheme.colour.white
+        )
+        ListDescription(
+            modifier = Modifier,
+            text = data.position,
+            color = PlumbBristolTheme.colour.white
+        )
     }
 }
 

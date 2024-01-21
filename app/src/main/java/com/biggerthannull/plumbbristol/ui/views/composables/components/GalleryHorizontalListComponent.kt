@@ -1,5 +1,6 @@
 package com.biggerthannull.plumbbristol.ui.views.composables.components
 
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -18,12 +19,16 @@ fun GalleryHorizontalListComponent(data: List<String>) {
     LazyRow {
         items(
             items = data,
-            itemContent = {url ->
+            itemContent = { url ->
                 imageLoader.Load(
                     url = url,
-                    modifier = Modifier.size(height = 250.dp, width = 300.dp),
+                    modifier = Modifier
+                        .size(height = 270.dp, width = 300.dp)
+                        .aspectRatio(
+                            ratio = 1.33F
+                        ),
                     contentDescription = null,
-                    scale = ContentScale.FillBounds
+                    scale = ContentScale.Crop
                 )
             }
         )
@@ -34,10 +39,12 @@ fun GalleryHorizontalListComponent(data: List<String>) {
 @Composable
 fun GalleryHorizontalListComponentPreview() {
     PlumbBristolTheme {
-        GalleryHorizontalListComponent(listOf(
-            "https://curator-assets.b-cdn.net/54c93d3b-d832-4eee-bb76-5772e8e3f8c1/186828319.jpg",
-            "https://curator-assets.b-cdn.net/54c93d3b-d832-4eee-bb76-5772e8e3f8c1/186828319.jpg",
-            "https://curator-assets.b-cdn.net/54c93d3b-d832-4eee-bb76-5772e8e3f8c1/186828319.jpg"
-        ))
+        GalleryHorizontalListComponent(
+            listOf(
+                "https://curator-assets.b-cdn.net/54c93d3b-d832-4eee-bb76-5772e8e3f8c1/186828319.jpg",
+                "https://curator-assets.b-cdn.net/54c93d3b-d832-4eee-bb76-5772e8e3f8c1/186828319.jpg",
+                "https://curator-assets.b-cdn.net/54c93d3b-d832-4eee-bb76-5772e8e3f8c1/186828319.jpg"
+            )
+        )
     }
 }

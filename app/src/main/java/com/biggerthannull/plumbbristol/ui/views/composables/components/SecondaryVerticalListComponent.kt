@@ -1,22 +1,21 @@
 package com.biggerthannull.plumbbristol.ui.views.composables.components
 
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.biggerthannull.plumbbristol.domain.usecase.models.Employee
 import com.biggerthannull.plumbbristol.ui.theme.PlumbBristolTheme
 
 @Composable
 fun SecondaryVerticalListComponent(data: List<Employee>) {
-    LazyColumn(
-        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2)
     ) {
-        items(items = data, itemContent = { employee ->
+        items(data) {  employee ->
             SecondaryListItemComponent(data = employee)
-        })
+        }
     }
 }
 
