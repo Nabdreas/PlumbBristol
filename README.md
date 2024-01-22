@@ -15,6 +15,8 @@ it with the following values. Keys will be provided on request
 
 **flickrApiKey**-*ADD_YOUR_KEY_HERE*
 
+Reason is that its not recommended to submit API keys to the source control due to secrurity reasons.
+
 ### Improvements
 
 * Looking to apply modularisation in the future, where it would have the following visability and practises :feature -> :domain <- :data
