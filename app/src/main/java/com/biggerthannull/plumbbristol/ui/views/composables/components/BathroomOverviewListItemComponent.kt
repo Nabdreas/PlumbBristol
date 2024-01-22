@@ -19,7 +19,7 @@ import com.biggerthannull.plumbbristol.ui.views.composables.elements.IconImageEl
 import com.biggerthannull.plumbbristol.ui.views.composables.elements.ListTitle
 
 @Composable
-fun PrimaryListItemComponent(data: BathroomOverview, onClick: (itemId: String) -> Unit) {
+fun BathroomOverviewListItemComponent(data: BathroomOverview, onClick: (itemId: String) -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -49,9 +49,9 @@ fun PrimaryListItemComponent(data: BathroomOverview, onClick: (itemId: String) -
 
 @Preview
 @Composable
-fun PrimaryListItemComponentPreview() {
+fun BathroomOverviewListItemComponentPreview() {
     PlumbBristolTheme {
-        PrimaryListItemComponent(
+        BathroomOverviewListItemComponent(
             BathroomOverview(
                 id = "id",
                 title = "I am a title",

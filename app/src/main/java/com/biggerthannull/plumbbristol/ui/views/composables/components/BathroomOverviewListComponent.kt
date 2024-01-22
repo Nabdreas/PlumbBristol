@@ -10,21 +10,21 @@ import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomOverview
 import com.biggerthannull.plumbbristol.ui.theme.PlumbBristolTheme
 
 @Composable
-fun PrimaryVerticalListComponent(data: List<BathroomOverview>, onClick: (itemId: String) -> Unit) {
+fun BathroomOverviewListComponent(data: List<BathroomOverview>, onClick: (itemId: String) -> Unit) {
     LazyColumn(
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
     ) {
         items(items = data, itemContent = { listItem ->
-            PrimaryListItemComponent(data = listItem, onClick = onClick)
+            BathroomOverviewListItemComponent(data = listItem, onClick = onClick)
         })
     }
 }
 
 @Preview
 @Composable
-fun PrimaryVerticalListComponentPreview() {
+fun BathroomOverviewListComponentPreview() {
     PlumbBristolTheme {
-        PrimaryVerticalListComponent(listOf(
+        BathroomOverviewListComponent(listOf(
             BathroomOverview(
                 id = "itemId",
                 title = "I am a title",

@@ -13,7 +13,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.biggerthannull.plumbbristol.R
 import com.biggerthannull.plumbbristol.ui.theme.PlumbBristolTheme
-import com.biggerthannull.plumbbristol.ui.views.composables.components.PrimaryVerticalListComponent
+import com.biggerthannull.plumbbristol.ui.views.composables.components.BathroomOverviewListComponent
 import com.biggerthannull.plumbbristol.ui.views.composables.elements.LoadingElement
 import com.biggerthannull.plumbbristol.ui.views.viewmodels.state.HomeScreenUIState
 
@@ -28,7 +28,7 @@ fun HomeScreen(uiState: HomeScreenUIState, navController: NavController) {
             LoadingElement()
         }
         if (uiState.bathrooms.isNotEmpty()) {
-            PrimaryVerticalListComponent(data = uiState.bathrooms) { itemId ->
+            BathroomOverviewListComponent(data = uiState.bathrooms) { itemId ->
                 val napPath = "bathroom_details_path/$itemId"
                 navController.navigate(napPath)
             }

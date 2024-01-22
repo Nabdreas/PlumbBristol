@@ -1,7 +1,7 @@
 package com.biggerthannull.plumbbristol.ui.views.composables.components
 
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
@@ -23,12 +23,14 @@ fun GalleryHorizontalListComponent(data: List<String>) {
                 imageLoader.Load(
                     url = url,
                     modifier = Modifier
-                        .size(height = 270.dp, width = 300.dp)
+                        .fillParentMaxSize()
+                        .fillParentMaxHeight()
+                        .width(300.dp)
                         .aspectRatio(
                             ratio = 1.33F
                         ),
                     contentDescription = null,
-                    scale = ContentScale.FillWidth
+                    scale = ContentScale.Crop
                 )
             }
         )
