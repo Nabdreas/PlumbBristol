@@ -3,6 +3,7 @@ package com.biggerthannull.plumbbristol.data.datasource
 import com.biggerthannull.plumbbristol.BuildConfig
 import com.biggerthannull.plumbbristol.data.datasource.api.DiscoverApi
 import com.biggerthannull.plumbbristol.data.datasource.model.DiscoveredBathroomsDTO
+import com.biggerthannull.plumbbristol.data.exceptions.DiscoverPhotosFailedException
 import javax.inject.Inject
 
 class DiscoverDataSourceImpl @Inject constructor(
@@ -15,7 +16,7 @@ class DiscoverDataSourceImpl @Inject constructor(
             if (response.isSuccessful && body != null) {
                 Result.success(body)
             } else {
-                Result.failure(Exception("Whoops failed to get photos"))
+                Result.failure(DiscoverPhotosFailedException("Whoops failed to get photos"))
             }
         } catch (e: Exception) {
             Result.failure(e)

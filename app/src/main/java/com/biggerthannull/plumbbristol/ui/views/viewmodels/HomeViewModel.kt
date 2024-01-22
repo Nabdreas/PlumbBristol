@@ -16,14 +16,14 @@ class HomeViewModel @Inject constructor(
     private val bathroomsUseCase: GetBathroomsUseCase
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(HomeScreenUIState())
+    private val _uiState = MutableStateFlow(HomeScreenUIState(isLoading = true))
     val uiState = _uiState.asStateFlow()
 
     init {
         viewModelScope.launch {
             val result = bathroomsUseCase.execute()
             _uiState.update {
-                it.copy(bathrooms = result)
+                it.copy(bathrooms = result, isLoading = false)
             }
         }
     }

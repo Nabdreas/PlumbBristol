@@ -20,7 +20,11 @@ class TeamViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             val result = getTeamUseCase.execute()
-            _uiState.value = TeamUIState.Success(result)
+            _uiState.value = if (result.isEmpty()) {
+                TeamUIState.Failed
+            } else {
+                TeamUIState.Success(result)
+            }
         }
     }
 }

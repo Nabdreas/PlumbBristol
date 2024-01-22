@@ -14,6 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import com.biggerthannull.plumbbristol.R
 import com.biggerthannull.plumbbristol.ui.theme.PlumbBristolTheme
 import com.biggerthannull.plumbbristol.ui.views.composables.components.PrimaryVerticalListComponent
+import com.biggerthannull.plumbbristol.ui.views.composables.elements.LoadingElement
 import com.biggerthannull.plumbbristol.ui.views.viewmodels.state.HomeScreenUIState
 
 @Composable
@@ -23,6 +24,9 @@ fun HomeScreen(uiState: HomeScreenUIState, navController: NavController) {
             .background(PlumbBristolTheme.colour.grey800)
             .fillMaxWidth()
     ) {
+        if (uiState.isLoading) {
+            LoadingElement()
+        }
         if (uiState.bathrooms.isNotEmpty()) {
             PrimaryVerticalListComponent(data = uiState.bathrooms) { itemId ->
                 val napPath = "bathroom_details_path/$itemId"

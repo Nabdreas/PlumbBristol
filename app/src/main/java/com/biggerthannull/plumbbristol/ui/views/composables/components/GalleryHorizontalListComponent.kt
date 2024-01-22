@@ -28,7 +28,7 @@ fun GalleryHorizontalListComponent(data: List<String>) {
                             ratio = 1.33F
                         ),
                     contentDescription = null,
-                    scale = ContentScale.Crop
+                    scale = ContentScale.FillWidth
                 )
             }
         )

@@ -3,5 +3,6 @@ package com.biggerthannull.plumbbristol.ui.views.viewmodels.state
 import com.biggerthannull.plumbbristol.domain.usecase.models.BathroomOverview
 
 data class HomeScreenUIState(
-    val bathrooms: List<BathroomOverview> = emptyList()
+    val bathrooms: List<BathroomOverview> = emptyList(),
+    val isLoading: Boolean = false
 )

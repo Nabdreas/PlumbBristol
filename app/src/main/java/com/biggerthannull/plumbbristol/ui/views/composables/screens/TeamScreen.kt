@@ -47,8 +47,12 @@ fun TeamScreen(uiState: TeamUIState) {
             is TeamUIState.Failed -> {
                 val errorLabel = stringResource(id = R.string.generic_error_label)
                 Text(
-                    modifier = Modifier.fillMaxWidth().semantics { contentDescription = errorLabel },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .semantics { contentDescription = errorLabel },
                     textAlign = TextAlign.Center,
+                    style = PlumbBristolTheme.typography.h1,
+                    color = PlumbBristolTheme.colour.white,
                     text = errorLabel
                 )
             }

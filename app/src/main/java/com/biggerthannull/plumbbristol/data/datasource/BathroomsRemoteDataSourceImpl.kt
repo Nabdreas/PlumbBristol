@@ -2,6 +2,8 @@ package com.biggerthannull.plumbbristol.data.datasource
 
 import com.biggerthannull.plumbbristol.data.datasource.model.BathroomDTO
 import com.biggerthannull.plumbbristol.data.di.NamedParams.BATHROOMS
+import com.biggerthannull.plumbbristol.data.exceptions.BathroomOverviewException
+import com.biggerthannull.plumbbristol.data.exceptions.EmptyBathroomDetailsException
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
@@ -16,7 +18,11 @@ class BathroomsRemoteDataSourceImpl @Inject constructor(
         return try {
             val snapshot = collection.orderBy("date", Query.Direction.DESCENDING).get().await()
             val result = parseBathroomsSnapshotToDTO(snapshot)
-            Result.success(result)
+            if (result.isEmpty()) {
+                Result.failure(BathroomOverviewException("There are no items"))
+            } else {
+                Result.success(result)
+            }
         } catch (e: Exception) {
             Result.failure(e)
         }
@@ -27,9 +33,8 @@ class BathroomsRemoteDataSourceImpl @Inject constructor(
             val snapshot = collection.document(documentId).get().await()
             val result = snapshot.toObject(BathroomDTO::class.java)
             if (result == null) {
-                Result.failure(Exception("Something failed"))
+                Result.failure(EmptyBathroomDetailsException("Something failed"))
             } else {
-
                 Result.success(
                     result.copy(
                         id = snapshot.id
