@@ -9,12 +9,12 @@ import com.biggerthannull.plumbbristol.domain.usecase.models.Employee
 import com.biggerthannull.plumbbristol.ui.theme.PlumbBristolTheme
 
 @Composable
-fun SecondaryVerticalListComponent(data: List<Employee>) {
+fun TeamOverviewGridComponent(data: List<Employee>) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2)
     ) {
         items(data) {  employee ->
-            SecondaryListItemComponent(data = employee)
+            EmployeeGridItemComponent(data = employee)
         }
     }
 }
@@ -23,7 +23,7 @@ fun SecondaryVerticalListComponent(data: List<Employee>) {
 @Composable
 fun SecondaryVerticalListComponentPreview() {
     PlumbBristolTheme {
-        SecondaryVerticalListComponent(
+        TeamOverviewGridComponent(
             listOf(
                 Employee(
                     name = "Bob",

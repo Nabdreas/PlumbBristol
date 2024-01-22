@@ -3,4 +3,8 @@
     <string name="generic_error_label">Sorry, something went down the toilet</string>
     <string name="empty_bookmarks">You have no bookmarks, go explore our amazing work</string>
     <string name="loading">Loading\n</string>
+
+
+    <!--  Accessibility labels  -->
+    <string name="employee_image_accessibility_label">Photo of the employee</string>
 </resources>

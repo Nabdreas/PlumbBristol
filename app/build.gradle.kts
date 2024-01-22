@@ -7,6 +7,10 @@ plugins {
     kotlin("kapt")
 }
 
+apply {
+    from("$rootDir/buildoptions.gradle")
+}
+
 android {
     namespace = "com.biggerthannull.plumbbristol"
     compileSdk = 34
@@ -94,7 +98,7 @@ dependencies {
     // Unit testing
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
-    testImplementation("io.mockk:mockk:1.13.3")
+    testImplementation("io.mockk:mockk:1.13.9")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
 
     // Room

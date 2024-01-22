@@ -9,17 +9,23 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import com.biggerthannull.plumbbristol.R
 import com.biggerthannull.plumbbristol.ui.theme.PlumbBristolTheme
+import org.jetbrains.annotations.TestOnly
+
+@TestOnly
+const val LOADING_ELEMENT_TEST_TAG = "loading_element_test_tag"
 
 @Composable
 fun LoadingElement() {
     Box(
         modifier = Modifier
+            .testTag(LOADING_ELEMENT_TEST_TAG)
             .fillMaxWidth(),
         contentAlignment = Alignment.Center
     ) {
