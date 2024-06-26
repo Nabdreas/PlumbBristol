@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(padding),
-                        color = MaterialTheme.colorScheme.background
+                        color = PlumbBristolTheme.colour.black
                     ) {
                         NavigationGraph(navController)
                     }

@@ -11,7 +11,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.biggerthannull.plumbbristol.ui.theme.tokens.LightColourTokens
 
 object PlumbBristolTheme {
     val typography: PlumbBristolTypography
@@ -62,17 +61,17 @@ object PlumbBristolTheme {
 
     @Immutable
     data class PlumbBristolColours(
-        val grey900: Color,
-        val grey800: Color,
-        val grey700: Color,
-        val grey600: Color,
-        val grey500: Color,
-        val grey400: Color,
-        val grey300: Color,
-        val grey200: Color,
-        val white: Color,
-        val black: Color,
-        val red: Color
+        val grey900: Color = Color.Unspecified,
+        val grey800: Color = Color.Unspecified,
+        val grey700: Color = Color.Unspecified,
+        val grey600: Color = Color.Unspecified,
+        val grey500: Color = Color.Unspecified,
+        val grey400: Color = Color.Unspecified,
+        val grey300: Color = Color.Unspecified,
+        val grey200: Color = Color.Unspecified,
+        val white: Color = Color.Unspecified,
+        val black: Color = Color.Unspecified,
+        val red: Color = Color.Unspecified
     )
 
     @Immutable
@@ -92,18 +91,6 @@ object PlumbBristolTheme {
 
     // reload values here?
     val LocalColours = staticCompositionLocalOf {
-        PlumbBristolColours(
-            grey900 = LightColourTokens.grey900,
-            grey800 = LightColourTokens.grey800,
-            grey700 = LightColourTokens.grey700,
-            grey600 = LightColourTokens.grey600,
-            grey500 = LightColourTokens.grey500,
-            grey400 = LightColourTokens.grey400,
-            grey300 = LightColourTokens.grey300,
-            grey200 = LightColourTokens.grey200,
-            white = LightColourTokens.white,
-            black = LightColourTokens.black,
-            red = LightColourTokens.red
-        )
+        PlumbBristolColours()
     }
 }
